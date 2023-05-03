@@ -1,5 +1,7 @@
 package Entity;
 
+import Impl.CustomerSection;
+
 import java.util.Scanner;
 
 public class Customer extends Shop{
@@ -85,6 +87,11 @@ public class Customer extends Shop{
 
 
     public void loginCustomer() {
-    	System.out.println("hello customer");
+
+        System.out.println("==========CUSTOMER PORTAL===========");
+
+//        while(true) {
+        new CustomerSection().loginMenu();
+
     }
 }
