@@ -84,13 +84,7 @@ public class UserLoginSystem {
     private static boolean createUser(String username, String password) {
         List<String[]> users = readUsersFromCSV();
 
-        for (String[] user : users) {
-            if (user[0].equals(username)) {
-                return false;
-            }
-        }
-
-        try (FileWriter writer = new FileWriter(CSV_FILE_PATH, true)) {
+        try (FileWriter writer = new FileWriter("customer.csv", true)) {
             writer.append(String.join(",", username, password)).append("\n");
         } catch (IOException e) {
             System.err.println("Error writing to file: " + e.getMessage());
@@ -103,7 +97,7 @@ public class UserLoginSystem {
     private static List<String[]> readUsersFromCSV() {
         List<String[]> users = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(CSV_FILE_PATH))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("customer.csv"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] fields = line.split(",");

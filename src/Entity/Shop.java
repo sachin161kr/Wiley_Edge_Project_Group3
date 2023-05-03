@@ -1,18 +1,19 @@
 package Entity;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import static sun.security.jgss.GSSUtil.login;
 
 public class Shop {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         Scanner sc = new Scanner(System.in);
         System.out.println("WELCOME TO ONLINE SHOPPING SYSTEM 😊");
         System.out.println();
 
         while(true){
-            System.out.println("1. REGISTER AS ADMIN");
+            System.out.println("1. LOGIN AS ADMIN");
             System.out.println("2. REGISTER AS CUSTOMER");
             System.out.println("3. LOGIN TO SYSTEM");
             System.out.println("4. EXIT");
@@ -20,7 +21,12 @@ public class Shop {
             int option = sc.nextInt();
 
             switch (option){
-                case 1: new Admin().registerAdmin();
+                case 1:
+                    System.out.println("Enter username: ");
+                    String username = sc.next();
+                    System.out.println("Enter password: ");
+                    String password = sc.next();
+                    new Admin().loginAdmin(username,password);
 
                 break;
                 case 2 : new Customer().registerCustomer();

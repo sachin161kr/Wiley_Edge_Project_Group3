@@ -7,6 +7,8 @@ public class ProductView {
     private static final String CSV_SPLIT_BY = ",";
 
     public static void main(String[] args) {
+
+        //print
         String csvFile = "users.csv";
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
             String line;

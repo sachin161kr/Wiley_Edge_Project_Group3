@@ -2,11 +2,18 @@ package Entity;
 
 import Repository.Repository;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Admin extends Shop {
     static Scanner in = new Scanner(System.in);
 
+    Repository repository = new Repository();
     static void registerAdmin() {
         System.out.println("==========ADMIN PORTAL===========");
 
@@ -15,6 +22,7 @@ public class Admin extends Shop {
            return;
 
     }
+
     static void register(){
         int check = 0;
         int id, age;
@@ -47,9 +55,26 @@ public class Admin extends Shop {
         System.out.println("*************************************");
     }
 
-    public void loginAdmin() {
+    public void loginAdmin(String username,String password) {
+       if (username.equals("admin")&&password.equals("admin")){
+           System.out.println("Logged in Successfully !");
+           Admin admin = new Admin();
+       }else {
+           System.out.println("INCORRECT USERNAME OR PASSWORD!!");
+       }
 
     }
+    public void addCategory(String categoryName){
+        repository.addCategory(categoryName);
+    }
+//    removing customers
+
+//    public void removeCustomer(int id){
+//        repository.removeCustomer(id);
+//    }
+
+
+
 //        email = in.nextLine();
 //        if (Validation.validate(pass)) insert(name, id, pass, num, email, check);
 //        else {
