@@ -1,9 +1,12 @@
 package Entity;
 
+import Repository.Repository;
+
 import java.util.Scanner;
 
 public class Admin extends Shop {
     static Scanner in = new Scanner(System.in);
+
     static void registerAdmin() {
         System.out.println("==========ADMIN PORTAL===========");
 
@@ -47,9 +50,6 @@ public class Admin extends Shop {
     public void loginAdmin() {
 
     }
-
-
-
 //        email = in.nextLine();
 //        if (Validation.validate(pass)) insert(name, id, pass, num, email, check);
 //        else {
@@ -57,4 +57,6 @@ public class Admin extends Shop {
 //            regisAdmin();
 //        }
     }
+
+
 

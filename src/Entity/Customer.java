@@ -19,12 +19,11 @@ public class Customer extends Shop{
     }
     static void register(){
         int check = 0;
-        int id, age;
+        int id;
         String name, email, pass, num;
 
         System.out.print("Enter Name = ");
         name = in.nextLine();
-
 
         System.out.println("CUSTOMER ID= ");
         id = in.nextInt();
