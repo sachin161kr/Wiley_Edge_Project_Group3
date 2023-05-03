@@ -57,4 +57,11 @@ public class Product {
     public void setRating(double rating) {
         this.rating = rating;
     }
+    public String toString(){
+        return "Name: "+ getProductName()+", Category: "+getCategory()+", Price: "+getPrice()+", Rating: "+getRating();
+    }
+    public void printProduct(){
+        System.out.println("Name: "+ getProductName()+"\n Category: "+getCategory()+"\n Price: "+getPrice()+"\n Rating: "+getRating());
+    }
+
 }
