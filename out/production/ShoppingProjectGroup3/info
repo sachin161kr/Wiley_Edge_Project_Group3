@@ -1,0 +1,222 @@
+*Shopping Management Java Console App:
+
+***This app simulates the working of an online shopping portal
+- where customers can buy products.
+- purely console-based application
+
+Admin Panel – functions provided like managing products and customers
+Customer Panel – functions provided like buying products and making payments
+
+Shop.java ( This is the main or the starting point of the project )
+Admin.java
+Customer.java
+Products.java
+Cart.java
+Payment.java
+Bills.java
+
+***Concepts to be Used:
+String manipulations
+Collections framework in form of ArrayList
+Exception Handling
+Inheritance
+Classes and Objects
+BufferedReader for taking entry
+
+Interface
+Best way of organizing code
+
+
+***Role Based Management:
+
+**
+Design class files – Store.java, Shop.java, Admin.java, and Customer.java
+Design class file – products.java
+Design class file – bills.java
+Design class files – Payment.java and Cart.java
+
+
+***DETAILS OF CLASS FILES:
+
+MAIN CLASS ( superclass ) = Shop.java
+
+SUBCLASSES of Shop.java = admin.java and customer.java
+
+- Shop.java :
+
+Main functions = registration of customer or admin, login into system Entry through buffered Reader
+Array List used in login function to store id, password, and user type ( C for the customer, A for admin ) as a list
+
+csv or text files used are login info, admin info, and cast info Login info = storing used id, password, and type of user Admininfo = storing all details of admin except password Custinfo = storing all details of the customer except password setUID() function sets the admin ID to store in (store) setCUID() function sets the customer ID to store in the files
+
+
+- Admin.java
+Functions include managing products (add,delete,view,search) by calling productsPage() function of products.java
+
+Other functions include adding customers, removing customers, editing profiles, view registered customers.
+
+For registering customers, since admin.java is subclass of Shop.java , registerCustomer() function of Shop is called by Shop.registerCustomer(), hence the small use of inheritance is here as the function need not be rewritten.
+
+- Customer.java :
+Database table custinfo accessed for editing profile function
+
+The main functions are viewing products, searching for products, adding and removing products from the cart, view the cart, and proceeding to the payment function.
+
+Here first initializeProducts() function is called to store all product info in array lists, so that database need not be accessed everytime, hence Concept of collection framework is used here in form of ArrayList and through ArrayList functions .add(), .get(), .clear()
+
+.add() = to add to ArrayList
+
+.get(int i) = to get the element stored at index i in the ArrayList
+
+Proceed to payment function calls payment.java class file and functions like add to cart, remove from the cart, and view cart call Cart.java. Calling is done via class objects like customerCart and p.
+
+customerCart = object of Cart class p=object of Payment class
+
+Customer.java is also the subclass of Shop.java where it calls the registerCustomer() function of the Shop.java through Classname.methodname like Shop.registerCustomer()
+
+- Products.java :
+The main functions are added, removing, altering product info, viewing, and searching products setPid() function is used to set product id to store in the database
+
+database table products are accessed to add, remove and alter product info
+
+- Cart.java :
+This class file contains functions of the cart like add to cart, view cart, remove the product from the cart and cancel cart which is called from the customer.java class file via object.
+
+Here add to cart function gets the product details to be added from customer.class via the constructor and adds them to the ArrayList so that the ArrayList can be used later on for displaying cart details and other functions as required.
+
+- Payment.java :
+The main function of the payment class is to display bills and pay bills by calling bill.java, therefore it is an intermediate class between customer.java and bill.java and this class also stores payment details like bill and card details.
+
+- Bill.java :
+Bill. class is called from the payment page through an object, this class contains details of a bill like a billing id, products purchased, and total amount. It also contains customer details whose bill it is. It stores the product details that are purchased in the ArrayList for easy access later on.
+
+It contains functions like :
+
+Generate bill = for calculating and storing the total amount in a variable Set bill id = for setting the bill id
+
+Display bill = for displaying bill details
+
+addtoDatabase = to add bill details to database table bills.
+
+
+// optional
+
+StoreConnection.java :
+ The store connection is a class file that is used to establish a connection with the files to read and to create a files for “Onlineshop” and five files – login info, admin info, bills, products, and cast info.
+
+It is imported into the class files like Shop.java and products.java where it is used to access the files and make connections.
+
+
+Exceptions:
+IOException: This exception(or related exceptions) to be used wherever BufferedReader has been used.
+
+
+========================================================================================================
+public class Shop {
+   // Main class for registration and login functions
+   // ArrayList to store login information
+   private ArrayList<String> loginInfo = new ArrayList<String>();
+
+   public void registerCustomer(String customerId, String customerName, String customerAddress) {
+      // Code to register a new customer
+   }
+
+   public void registerAdmin(String adminId, String adminName, String adminAddress) {
+      // Code to register a new admin
+   }
+
+   public boolean login(String userId, String password) {
+      // Code to verify login credentials and return true or false
+   }
+}
+
+public class Admin extends Shop {
+   // Subclass of Shop for admin-specific functions
+   // ArrayList to store admin information
+   private ArrayList<String> adminInfo = new ArrayList<String>();
+
+   public void manageProducts() {
+      // Code to manage products (add, delete, view, search)
+   }
+
+   public void addCustomer(String customerId, String customerName, String customerAddress) {
+      // Code to add a new customer
+   }
+
+   public void removeCustomer(String customerId) {
+      // Code to remove a customer
+   }
+
+   public void editProfile(String adminId, String adminName, String adminAddress) {
+      // Code to edit admin profile
+   }
+
+   // Call Shop's registerCustomer method to add a new customer
+   public void addNewCustomer(String customerId, String customerName, String customerAddress) {
+      Shop.registerCustomer(customerId, customerName, customerAddress);
+   }
+}
+
+public class Customer extends Shop {
+   // Subclass of Shop for customer-specific functions
+   // ArrayList to store customer information
+   private ArrayList<String> customerInfo = new ArrayList<String>();
+
+   public void viewProducts() {
+      // Code to view all products
+   }
+
+   public void searchProduct(String productName) {
+      // Code to search for a specific product
+   }
+
+   public void addToCart(String productId, int quantity) {
+      // Code to add a product to the cart
+   }
+
+   public void removeFromCart(String productId) {
+      // Code to remove a product from the cart
+   }
+
+   public void viewCart() {
+      // Code to view the cart
+   }
+
+   public void proceedToPayment() {
+      // Code to proceed to payment
+      Cart customerCart = new Cart();
+      Payment p = new Payment();
+      // Code to interact with customerCart and p objects
+   }
+
+   // Call Shop's registerCustomer method to add a new customer
+   public void registerNewCustomer(String customerId, String customerName, String customerAddress) {
+      Shop.registerCustomer(customerId, customerName, customerAddress);
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
