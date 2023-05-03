@@ -11,9 +11,16 @@ public class Cart {
 
      Repository repository;
 
-     public void getProductsInTheCart() throws FileNotFoundException {
-         FileInputStream fis = new FileInputStream("cart.csv");
+     public void getProductsInTheCart() throws IOException {
+         FileInputStream fin = new FileInputStream("cart.csv");
          BufferedInputStream bis = new BufferedInputStream(fis);
+
+         int i;
+         while((i=bis.read())!=-1) {
+             System.out.println((char)i);
+         }
+         bis.close();
+         fin.close();
 
 
          cartList.forEach(product -> System.out.println(product.getProductName()));
