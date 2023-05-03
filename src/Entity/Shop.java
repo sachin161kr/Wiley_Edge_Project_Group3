@@ -6,7 +6,7 @@ import static sun.security.jgss.GSSUtil.login;
 
 public class Shop {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("WELCOME TO ONLINE SHOPPING SYSTEM 😊");
         System.out.println();
@@ -34,11 +34,6 @@ public class Shop {
                 default:
                     System.out.println("PLEASE ENTER CORRECT CHOICE ");
             }
-
         }
     }
-
-
-
-
 }
