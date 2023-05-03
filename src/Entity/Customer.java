@@ -6,13 +6,13 @@ public class Customer extends Shop{
     private int customerId;
     private String customerName;
     private String mobile;
-
-
     static Scanner in = new Scanner(System.in);
+
+
+
+
     static void registerCustomer() {
         System.out.println("==========CUSTOMER PORTAL===========");
-
-//        while(true) {
         register();
         return;
 
@@ -39,10 +39,6 @@ public class Customer extends Shop{
         System.out.print("Enter email= ");
         email = in.nextLine();
 
-        //file input
-
-
-        //
         System.out.println("SUCCESSFULLY REGISTERED AS CUSTOMER !!");
         System.out.println();
         System.out.println("*************************************");
