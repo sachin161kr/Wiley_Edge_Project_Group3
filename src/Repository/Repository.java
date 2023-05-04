@@ -1,6 +1,6 @@
 package Repository;
 
-import Entity.Customer;
+import Entity.CustomerImpl;
 import Entity.Product;
 
 import java.io.BufferedReader;
@@ -14,7 +14,7 @@ public class Repository {
     HashMap<String, Product> productMap = new HashMap<>();
     List<Product> productList = new ArrayList<>();
     List<String>categoryList = new ArrayList<>();
-   List<Customer>customerList = new ArrayList<>();
+   List<CustomerImpl> customerImplList = new ArrayList<>();
     private static final String CSV_SPLIT_BY = ",";
 
     public Repository() {
@@ -94,17 +94,17 @@ public class Repository {
     }
 //
 //    public void removeCustomer(int id) {
-//        for(Customer customer:customerList){
+//        for(CustomerImpl customer:customerImplList){
 //            if(customer.getCustomerId()==id){
-//                customerList.remove(customer);
+//                customerImplList.remove(customer);
 //                return;
 //            }
 //        }
-//        System.out.println("Invalid Customer id");
+//        System.out.println("Invalid CustomerImpl id");
 //        return;
 //    }
 
-    public void addCustomer(Customer customer) {
-        customerList.add(customer);
+    public void addCustomer(CustomerImpl customerImpl) {
+        customerImplList.add(customerImpl);
     }
 }

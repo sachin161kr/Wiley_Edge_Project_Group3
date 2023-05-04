@@ -1,13 +1,6 @@
 package Entity;
-//remaining
-//editing profiles,
-
-
-
-
-
-
-import Connection.StorageConnection;
+import Exceptions.InvalidProductNameException;
+import Interface.Customer;
 import Repository.Repository;
 
 import java.io.*;
@@ -15,28 +8,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Customer extends Shop{
+public class CustomerImpl extends Shop implements Customer {
     static Repository repository = new Repository();
     public static void main(String[] args) {
-        try {
-            addProductToCart("Mouse","Pc");
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        checkOut();
+
     }
     private String username;
     private String password;
 
-    public Customer(String username, String password) {
+    public CustomerImpl(String username, String password) {
 
         this.username = username;
         this.password = password;
     }
 
-    public Customer() {
+    public CustomerImpl() {
     }
-
 
 
     public String getUsername() {
@@ -60,7 +47,7 @@ public class Customer extends Shop{
     }
 
     public static void setIn(Scanner in) {
-        Customer.in = in;
+        CustomerImpl.in = in;
     }
 
     public static List<Product> getCartList() {
@@ -68,7 +55,7 @@ public class Customer extends Shop{
     }
 
     public static void setCartList(List<Product> cartList) {
-        Customer.cartList = cartList;
+        CustomerImpl.cartList = cartList;
     }
 
     static Scanner in = new Scanner(System.in);
@@ -142,16 +129,22 @@ public class Customer extends Shop{
             if(products[size].equals("END")){
                 return;
             }
-            Product product = repository.searchProductByName(products[size].trim());
-            if (product == null) {
-                System.out.println(products[size] + " not found!!");
-            } else {
-                cartList.add(product);
+            Product product = new Product();
+            try {
+                 product = repository.searchProductByName(products[size].trim());
+                if (product == null) {
+                    throw new InvalidProductNameException(products[size] + " not found!!");
+                }
             }
+             catch (InvalidProductNameException e){
+                 System.out.println(e.getMessage());
+             }
+                cartList.add(product);
             size++;
         }
     }
     public static void searchProductByName(String productName){
+
         Product product =repository.searchProductByName(productName);
         product.printProduct();
     }
@@ -163,24 +156,17 @@ public class Customer extends Shop{
         }
     }
 
-    private static void createUser(String username, String password) {
-        Customer customer = new Customer(username,password);
-        repository.addCustomer(customer);
+    public static void createUser(String username, String password) {
+        CustomerImpl customerImpl = new CustomerImpl(username,password);
+        repository.addCustomer(customerImpl);
         List<String[]> users = viewRegisteredCustomers();
 
 
     }
+
     //    view registered customers
 
-
-
-
-
-
-
-
-
-    private static List<String[]> viewRegisteredCustomers() {
+    public static List<String[]> viewRegisteredCustomers() {
         List<String[]> users = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader("customer.csv"))) {
@@ -194,8 +180,5 @@ public class Customer extends Shop{
         }
         return users;
     }
-    public static void loginCustomer() {
 
-
-    }
 }

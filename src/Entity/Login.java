@@ -63,8 +63,8 @@ public class Login {
 
             ArrayList<String> list = new ArrayList<String>();
             String input;
-            while (true) {
 
+            while (true) {
                 input = scanner.nextLine();
                 if (input.equals("stop")) {
                     break;
@@ -76,12 +76,12 @@ public class Login {
             for (int i = 0; i <str.length ; i++) {
                 str[i] = list.get(i);
             }
-            Customer.addProductToCart(str);
-            Customer.viewTheCart();
+            CustomerImpl.addProductToCart(str);
+            CustomerImpl.viewTheCart();
             System.out.println("Do you want to checkout ?");
             String answer = scanner.nextLine();
             if(answer.equals("YES")||answer.equals("yes")){
-                Customer.checkOut();
+                CustomerImpl.checkOut();
             }
             else{
                 Login.login();
@@ -114,14 +114,14 @@ public class Login {
         System.out.println("Enter your password:");
         String password = scanner.nextLine();
 
-        if (createUser(username, password)) {
+        if (createCutomer(username, password)) {
             System.out.println("Signup successful. You can now login.");
         } else {
             System.out.println("Username already exists, please try again with a different username.");
         }
     }
 
-    public static boolean createUser(String username, String password) {
+    public static boolean createCutomer(String username, String password) {
         List<String[]> users = readUsersFromCSV();
 
         try (FileWriter writer = new FileWriter("customer.csv", true)) {

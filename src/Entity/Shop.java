@@ -3,8 +3,6 @@ package Entity;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import static sun.security.jgss.GSSUtil.login;
-
 public class Shop {
 
     public static void main(String[] args) throws FileNotFoundException {
@@ -29,7 +27,7 @@ public class Shop {
                     new Admin().loginAdmin(username,password);
 
                 break;
-                case 2 : new Customer().registerCustomer();
+                case 2 : new CustomerImpl().registerCustomer();
                 break;
                 case 3 :new Login().login();
                 break;

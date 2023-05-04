@@ -40,14 +40,14 @@ Design class files – Payment.java and Cart.java
 
 MAIN CLASS ( superclass ) = Shop.java
 
-SUBCLASSES of Shop.java = admin.java and customer.java
+SUBCLASSES of Shop.java = admin.java and customerImpl.java
 
 - Shop.java :
 
-Main functions = registration of customer or admin, login into system Entry through buffered Reader
-Array List used in login function to store id, password, and user type ( C for the customer, A for admin ) as a list
+Main functions = registration of customerImpl or admin, login into system Entry through buffered Reader
+Array List used in login function to store id, password, and user type ( C for the customerImpl, A for admin ) as a list
 
-csv or text files used are login info, admin info, and cast info Login info = storing used id, password, and type of user Admininfo = storing all details of admin except password Custinfo = storing all details of the customer except password setUID() function sets the admin ID to store in (store) setCUID() function sets the customer ID to store in the files
+csv or text files used are login info, admin info, and cast info Login info = storing used id, password, and type of user Admininfo = storing all details of admin except password Custinfo = storing all details of the customerImpl except password setUID() function sets the admin ID to store in (store) setCUID() function sets the customerImpl ID to store in the files
 
 
 - Admin.java
@@ -80,15 +80,15 @@ The main functions are added, removing, altering product info, viewing, and sear
 database table products are accessed to add, remove and alter product info
 
 - Cart.java :
-This class file contains functions of the cart like add to cart, view cart, remove the product from the cart and cancel cart which is called from the customer.java class file via object.
+This class file contains functions of the cart like add to cart, view cart, remove the product from the cart and cancel cart which is called from the customerImpl.java class file via object.
 
-Here add to cart function gets the product details to be added from customer.class via the constructor and adds them to the ArrayList so that the ArrayList can be used later on for displaying cart details and other functions as required.
+Here add to cart function gets the product details to be added from customerImpl.class via the constructor and adds them to the ArrayList so that the ArrayList can be used later on for displaying cart details and other functions as required.
 
 - Payment.java :
-The main function of the payment class is to display bills and pay bills by calling bill.java, therefore it is an intermediate class between customer.java and bill.java and this class also stores payment details like bill and card details.
+The main function of the payment class is to display bills and pay bills by calling bill.java, therefore it is an intermediate class between customerImpl.java and bill.java and this class also stores payment details like bill and card details.
 
 - Bill.java :
-Bill. class is called from the payment page through an object, this class contains details of a bill like a billing id, products purchased, and total amount. It also contains customer details whose bill it is. It stores the product details that are purchased in the ArrayList for easy access later on.
+Bill. class is called from the payment page through an object, this class contains details of a bill like a billing id, products purchased, and total amount. It also contains customerImpl details whose bill it is. It stores the product details that are purchased in the ArrayList for easy access later on.
 
 It contains functions like :
 
@@ -118,7 +118,7 @@ public class Shop {
    private ArrayList<String> loginInfo = new ArrayList<String>();
 
    public void registerCustomer(String customerId, String customerName, String customerAddress) {
-      // Code to register a new customer
+      // Code to register a new customerImpl
    }
 
    public void registerAdmin(String adminId, String adminName, String adminAddress) {
@@ -140,26 +140,26 @@ public class Admin extends Shop {
    }
 
    public void addCustomer(String customerId, String customerName, String customerAddress) {
-      // Code to add a new customer
+      // Code to add a new customerImpl
    }
 
    public void removeCustomer(String customerId) {
-      // Code to remove a customer
+      // Code to remove a customerImpl
    }
 
    public void editProfile(String adminId, String adminName, String adminAddress) {
       // Code to edit admin profile
    }
 
-   // Call Shop's registerCustomer method to add a new customer
+   // Call Shop's registerCustomer method to add a new customerImpl
    public void addNewCustomer(String customerId, String customerName, String customerAddress) {
       Shop.registerCustomer(customerId, customerName, customerAddress);
    }
 }
 
 public class Customer extends Shop {
-   // Subclass of Shop for customer-specific functions
-   // ArrayList to store customer information
+   // Subclass of Shop for customerImpl-specific functions
+   // ArrayList to store customerImpl information
    private ArrayList<String> customerInfo = new ArrayList<String>();
 
    public void viewProducts() {
@@ -189,7 +189,7 @@ public class Customer extends Shop {
       // Code to interact with customerCart and p objects
    }
 
-   // Call Shop's registerCustomer method to add a new customer
+   // Call Shop's registerCustomer method to add a new customerImpl
    public void registerNewCustomer(String customerId, String customerName, String customerAddress) {
       Shop.registerCustomer(customerId, customerName, customerAddress);
    }
