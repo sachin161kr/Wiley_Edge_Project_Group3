@@ -126,20 +126,13 @@ public class CustomerImpl extends Shop implements Customer {
         int size = 0;
 
         while (size < products.length) {
-            if(products[size].equals("END")){
-                return;
-            }
-            Product product = new Product();
-            try {
-                 product = repository.searchProductByName(products[size].trim());
-                if (product == null) {
-                    throw new InvalidProductNameException(products[size] + " not found!!");
-                }
-            }
-             catch (InvalidProductNameException e){
-                 System.out.println(e.getMessage());
-             }
+
+            Product product =  repository.searchProductByName(products[size].trim());
+            if(product==null){
+            }else{
                 cartList.add(product);
+
+            }
             size++;
         }
     }

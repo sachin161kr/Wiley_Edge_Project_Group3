@@ -54,13 +54,7 @@ public class Repository {
 
     public List<Product> searchProductsByCategory(String category) {
 
-        //1st check if category exists in the cateList
-        if (!categoryList.contains(category)) {
-            System.out.println("Invalid category name!");
-            return new ArrayList<>();
-        }
-        {
-            //category list
+         //category list
             List<Product> productListByCategory = new ArrayList<>();
 
 
@@ -77,7 +71,7 @@ public class Repository {
 
             return productListByCategory;
         }
-    }
+
 
     public void getAllProducts() {
 
