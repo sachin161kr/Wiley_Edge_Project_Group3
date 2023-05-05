@@ -11,9 +11,10 @@ public class Login {
     private static final String CSV_FILE_PATH = "customer.csv";
 
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException, InterruptedException {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to the User Login System");
+        System.out.println();
+        System.out.println("================CUSTOMER PORTAL===============");
 
 
         System.out.println("\nPlease select an option:");
@@ -42,7 +43,7 @@ public class Login {
 
     }
 
-    public static void login() throws FileNotFoundException {
+    public static void login() throws FileNotFoundException, InterruptedException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nEnter your username:");
         String username = scanner.nextLine();
@@ -51,11 +52,12 @@ public class Login {
         String password = scanner.nextLine();
 
         if (validateUser(username, password)) {
-            System.out.println("Login successful🎊");
+            System.out.println();
+            System.out.println("Login successful 🎊");
+            System.out.println();
+            System.out.println("Redirecting...");
 
-
-
-
+            Thread.sleep(2000);
             ArrayList<String> list = new ArrayList<String>();
             String input;
            while(true) {
@@ -68,6 +70,7 @@ public class Login {
                System.out.println("4.Add Products to Cart ");
                System.out.println("5.View Cart Items ");
                System.out.println("6.Checkout");
+
 
                int option = scanner.nextInt();
                switch (option) {
@@ -131,6 +134,9 @@ public class Login {
                        System.out.println("Choose Options only from 1,2,3,4 or 5");
 
                }
+               System.out.println("Press Enter to continue...");
+               scanner.nextLine();
+               scanner.nextLine();
            }
 
 

@@ -71,42 +71,18 @@ public class CustomerImpl extends Shop implements Customer {
         payment.getWay(cartList,sum);
     }
 
-    static void registerCustomer() {
-        System.out.println("==========CUSTOMER PORTAL===========");
-        register();
-        return;
 
-    }
-    static void register(){
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Enter customer id :");
-        int id = sc.nextInt();
-
-        System.out.println("Enter customer name :");
-        String name =sc.nextLine();
-
-        System.out.println("Enter mobile no :");
-        String mobile = sc.nextLine();
-
-        System.out.println("Enter username :");
-        String username = sc.nextLine();
-
-        System.out.println("Enter Password :");
-        String password = sc.nextLine();
-
-         createUser(username,password);
-
-        System.out.println("SUCCESSFULLY REGISTERED AS CUSTOMER !!");
-        System.out.println();
-        System.out.println("*************************************");
-    }
     public static void viewTheCart(){
-        System.out.println("YOUR CART ITEMS: ");
-        System.out.println();
-        for (Product p : cartList){
-            p.printProduct();
+
+        if (cartList.isEmpty()){
+            System.out.println("CART IS EMPTY");
+        }else {
+            System.out.println("YOUR CART ITEMS: ");
             System.out.println();
+            for (Product p : cartList) {
+                p.printProduct();
+                System.out.println();
+            }
         }
     }
 

@@ -1,6 +1,6 @@
-package Pages;
+package functionalities.Pages;
 
-import Models.Customers;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,16 +40,16 @@ public class Global {
     }
 
     // Customers
-
-    private static ArrayList<Customers> customerList = new ArrayList<>();
-
-    public static ArrayList<Customers> getCustomerList() {
-        return customerList;
-    }
-
-    public static void setCustomerList(ArrayList<Customers> cus) {
-        Global.customerList = cus;
-    }
+//
+//    private static ArrayList<Customers> customerList = new ArrayList<>();
+//
+//    public static ArrayList<Customers> getCustomerList() {
+//        return customerList;
+//    }
+//
+//    public static void setCustomerList(ArrayList<Customers> cus) {
+//        Global.customerList = cus;
+//    }
 
 
 

@@ -1,4 +1,4 @@
-package Pages;
+package functionalities.Pages;
 
 import java.util.Scanner;
 
