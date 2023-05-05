@@ -124,11 +124,17 @@ public class AdminMenu {
     {
         Scanner sc = new Scanner(System.in);
 
+        HashMap<String, ArrayList<String>> temp = Global.getCategoryMap();
+
+        for (Map.Entry<String, ArrayList<String>> stringArrayListEntry : temp.entrySet()) {
+            System.out.println(stringArrayListEntry);
+        }
+
         System.out.println("Enter Category to remove");
 
         String category = sc.nextLine();
 
-        HashMap<String, ArrayList<String>> temp = Global.getCategoryMap();
+
 
         if(temp.containsKey(category))
         {
